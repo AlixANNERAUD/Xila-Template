@@ -1,3 +1,3 @@
 # Xila-Template
 
-A template repository for creating software for Xila operating system.
+A template repository ready to start developping software for Xila.
