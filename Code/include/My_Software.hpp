@@ -1,3 +1,13 @@
+///
+ /// @file My_Software.hpp
+ /// @author Alix ANNERAUD (alix.anneraud@outlook.fr)
+ /// @brief This the header file of Xila software template.
+ /// @version 0.1
+ /// @date 03-09-2021
+ /// 
+ /// @copyright Copyright (c) 2021
+ /// 
+
 #include "Xila.hpp"
 
 // -- Software class which contains all function and data of the software.

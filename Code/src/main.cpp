@@ -1,8 +1,11 @@
 #include "Xila.hpp"
+
+// -- Import "My Software" header file.
 #include "My_Software.hpp"
 
 void setup()
 {
+    // -- Import all software handle.
     extern Xila_Class::Software_Handle Calculator_Handle;
     extern Xila_Class::Software_Handle Clock_Handle;
     extern Xila_Class::Software_Handle Internet_Browser_Handle;
@@ -17,6 +20,7 @@ void setup()
     extern Xila_Class::Software_Handle Tiny_Basic_Handle;
     extern Xila_Class::Software_Handle My_Software_Handle;
 
+    // -- Create a software package with all software reference.
     Software_Handle_Class *Custom_Software_Package[13] =
         {
             &Calculator_Handle,
@@ -31,13 +35,14 @@ void setup()
             &Simon_Handle,
             &Text_Editor_Handle,
             &Tiny_Basic_Handle,
-            &My_Software_Handle
-            };
+            &My_Software_Handle};
 
+    // -- Import software package and start Xila.
     Xila.System.Start(Custom_Software_Package, 13);
 }
 
 void loop()
 {
+    // -- Delete loop task because it's unused.
     Xila.Task.Delete();
 }

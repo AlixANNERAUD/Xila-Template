@@ -1,8 +1,19 @@
+///
+ /// @file My_Software.cpp
+ /// @author Alix ANNERAUD (alix.anneraud@outlook.fr)
+ /// @brief This is the source file of Xila software template.one
+ /// @version 0.1
+ /// @date 03-09-2021
+ /// 
+ /// @copyright Copyright (c) 2021
+ ///
+ 
 #include "My_Software.hpp"
 
+// -- Software handle
 Xila_Class::Software_Handle My_Software_Handle("My Software", My_Software::Icon_32, My_Software::Load);
 
-// Software loader
+// -- Software loader
 Xila_Class::Software *My_Software::Load()
 {
     // -- Check if there is a duplicate.
@@ -17,14 +28,14 @@ Xila_Class::Software *My_Software::Load()
     return Instance_Pointer;
 };
 
-// Software constructor : executed when software is loaded into memory.
+// -- Software constructor : executed when software is loaded into memory.
 My_Software::My_Software() : Xila_Class::Software(My_Software_Handle)
 {
     // -- Create main task
     Xila.Task.Create(Main_Task, "My Software Task", Memory_Chunk(4), NULL, &Task_Handle);
 };
 
-// Software destructor : executed when software is unloaded of memory.
+// -- Software destructor : executed when software is unloaded of memory.
 My_Software::~My_Software()
 {
     // -- Check if there is a duplicate
@@ -37,7 +48,7 @@ My_Software::~My_Software()
     Instance_Pointer = NULL;
 };
 
-// Software variable setter
+// -- Software variable setter
 void My_Software::Set_Variable(Xila_Class::Address Address, Xila_Class::Type Type, const void *Data)
 {
     // -- Binds "MA" (0x4D41) address with My_Attribute.
@@ -51,13 +62,13 @@ void My_Software::Set_Variable(Xila_Class::Address Address, Xila_Class::Type Typ
     }
 }
 
-// A regular method
+// -- A regular method
 void My_Software::My_Method()
 {
     Send_Instruction('M', 'M'); // -- Add instruction "MM" to instruction queue.
 }
 
-// Software main task
+// -- Software main task
 void My_Software::Main_Task(void *)
 {
     // -- Main task must never return, so an infinite loop is required
@@ -66,7 +77,7 @@ void My_Software::Main_Task(void *)
         // -- Get instruction from instruction queue, then bind with a function / instruction.
         switch (Instance_Pointer->Get_Instruction())
         {
-        case Instruction('M', 'M'): // -- Bind My_Function() with the instruciton "MM" (0x4D4D)
+        case Instruction('M', 'M'): // -- Bind My_Method() with the instruciton "MM" (0x4D4D)
             Instance_Pointer->My_Method();
             break;
         default: // -- Don't forget default statement.
